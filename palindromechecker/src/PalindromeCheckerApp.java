@@ -1,36 +1,31 @@
 public class PalindromeCheckerApp {
 
     /**
-     * Recursive function to check palindrome
-     */
-    static boolean isPalindrome(String str, int start, int end) {
-
-        // Base condition
-        if (start >= end) {
-            return true;
-        }
-        // If characters are not equal
-        if (str.charAt(start) != str.charAt(end)) {
-            return false;
-        }
-
-        // Recursive call
-        return isPalindrome(str, start + 1, end - 1);
-    }
-
-    /**
-     * Application entry point for UC9.
+     * Application entry point for UC10
      * @param args Command-line arguments
      */
     public static void main(String[] args) {
 
         // Define the input string
-        String input = "madam";
+        String input = "A man a plan a canal Panama";
 
-        // Call recursive function
-        boolean isPalindrome = isPalindrome(input, 0, input.length() - 1);
+        // Normalize string: remove spaces and convert to lowercase
+        String normalized = input.replaceAll("\\s+", "").toLowerCase();
 
-        // Output
+        // Flag to track palindrome state
+        boolean isPalindrome = true;
+
+        // Compare characters from both ends
+        for (int i = 0; i < normalized.length() / 2; i++) {
+
+            // Compare symmetric characters
+            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        // Print result
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
     }
