@@ -1,39 +1,38 @@
+import java.util.Stack;
 
-    /**
-     *USE CASE 1- application entry and welcome message
-     *
-     *Description:
-     * This class represents the entry point of
-     * Palindrome Checker App
-     *
-     * At this stage the application  starts execution from main()
-     * Displays Welcome message and shows application version
-     *
-     * No palindrome logic is implemented yet
-     *The goal is to establish a clear startup flow
-     *
-     * @author Developer
-     * @version 1.0
-     *
-     */
-    public class PalindromeCheckerApp{
-        /**
-         * Application entry point
-         * first method to be executed when program starts
-         * @param args Command-line arguments
-         */
-        public static void main() {
-            String input="madam";
-            boolean isPalindrome=true;
+/**
+ * UC5: Stack-Based Palindrome Checker
+ */
 
-            for (int i=0;i<input.length()/2; i++){
-                if(input.charAt(i)!=input.charAt(input.length()-1-i)){
-                    isPalindrome=false;
-                    break;
-                }
-            }
-            System.out.println("Input text = " +input);
-            System.out.println("Is it a Palindrome? :"+ isPalindrome);
+public class PalindromeCheckerApp {
+
+    public static void main(String[] args) {
+
+        // Declare and initialize input
+        String input = "level";
+
+        // Create a stack
+        Stack<Character> stack = new Stack<>();
+
+        // Push characters into stack
+        for (int i = 0; i < input.length(); i++) {
+            stack.push(input.charAt(i));
         }
-    }
 
+        boolean isPalindrome = true;
+
+        // Pop characters and compare
+        for (int i = 0; i < input.length(); i++) {
+            char popped = stack.pop();
+
+            if (input.charAt(i) != popped) {
+                isPalindrome = false;
+                break;
+            }
+        }
+
+        // Print result
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome);
+    }
+}
