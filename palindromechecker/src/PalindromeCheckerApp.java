@@ -1,35 +1,34 @@
-import java.util.Stack;
+public class RecursivePalindromeCheckerApp {
 
-/**
- * UC5: Stack-Based Palindrome Checker
- */
+    /**
+     * Recursive function to check palindrome
+     */
+    static boolean isPalindrome(String str, int start, int end) {
 
-public class PalindromeCheckerApp {
+        // Base condition
+        if (start >= end) {
+            return true;
+        }
+        // If characters are not equal
+        if (str.charAt(start) != str.charAt(end)) {
+            return false;
+        }
 
+        // Recursive call
+        return isPalindrome(str, start + 1, end - 1);
+    }
+
+    /**
+     * Application entry point for UC9.
+     * @param args Command-line arguments
+     */
     public static void main(String[] args) {
 
-        // Declare and initialize input
-        String input = "noon";
+        // Define the input string
+        String input = "madam";
 
-        // Create a stack
-        Stack<Character> stack = new Stack<>();
-
-        // Push characters into stack
-        for (int i = 0; i < input.length(); i++) {
-            stack.push(input.charAt(i));
-        }
-
-        boolean isPalindrome = true;
-
-        // Pop characters and compare
-        for (int i = 0; i < input.length(); i++) {
-            char popped = stack.pop();
-
-            if (input.charAt(i) != popped) {
-                isPalindrome = false;
-                break;
-            }
-        }
+        // Call recursive function
+        boolean isPalindrome = isPalindrome(input, 0, input.length() - 1);
 
         // Print result
         System.out.println("Input : " + input);
