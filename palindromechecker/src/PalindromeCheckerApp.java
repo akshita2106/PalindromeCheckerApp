@@ -1,37 +1,36 @@
-import java.util.Stack;
-
-/**
- * UC5: Stack-Based Palindrome Checker
- */
+import java.util.Deque;
+import java.util.ArrayDeque;
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Declare and initialize input
-        String input = "noon";
+        // Define the input string
+        String input = "refer";
 
-        // Create a stack
-        Stack<Character> stack = new Stack<>();
+        // Create a Deque to store characters
+        Deque<Character> deque = new ArrayDeque<>();
 
-        // Push characters into stack
-        for (int i = 0; i < input.length(); i++) {
-            stack.push(input.charAt(i));
+        // Add each character to the deque
+        for (char c : input.toCharArray()) {
+            deque.addLast(c);
         }
 
+        // Flag to track palindrome result
         boolean isPalindrome = true;
 
-        // Pop characters and compare
-        for (int i = 0; i < input.length(); i++) {
-            char popped = stack.pop();
+        // Continue comparison while more than one element exists
+        while (deque.size() > 1) {
+            char front = deque.removeFirst();
+            char rear = deque.removeLast();
 
-            if (input.charAt(i) != popped) {
+            if (front != rear) {
                 isPalindrome = false;
                 break;
             }
         }
 
-        // Print result
+        // Output
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
     }
