@@ -1,44 +1,36 @@
-import java.util.Stack;
-import java.util.Queue;
-import java.util.LinkedList;
-
-/**
- * UC6: Queue + Stack Based Palindrome Checker
- */
+import java.util.Deque;
+import java.util.ArrayDeque;
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Input string
-        String input = "madam";
+        // Define the input string
+        String input = "refer";
 
-        // Create Stack and Queue
-        Stack<Character> stack = new Stack<>();
-        Queue<Character> queue = new LinkedList<>();
+        // Create a Deque to store characters
+        Deque<Character> deque = new ArrayDeque<>();
 
-        // Push and Enqueue characters
-        for (int i = 0; i < input.length(); i++) {
-            char ch = input.charAt(i);
-            stack.push(ch);      // LIFO
-            queue.add(ch);       // FIFO
+        // Add each character to the deque
+        for (char c : input.toCharArray()) {
+            deque.addLast(c);
         }
 
+        // Flag to track palindrome result
         boolean isPalindrome = true;
 
-        // Compare dequeue vs pop
-        for (int i = 0; i < input.length(); i++) {
+        // Continue comparison while more than one element exists
+        while (deque.size() > 1) {
+            char front = deque.removeFirst();
+            char rear = deque.removeLast();
 
-            char fromQueue = queue.remove(); // dequeue
-            char fromStack = stack.pop();    // pop
-
-            if (fromQueue != fromStack) {
+            if (front != rear) {
                 isPalindrome = false;
                 break;
             }
         }
 
-        // Print result
+        // Output
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
     }
