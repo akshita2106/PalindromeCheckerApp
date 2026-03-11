@@ -1,4 +1,4 @@
-public class RecursivePalindromeCheckerApp {
+public class PalindromeCheckerApp {
 
     /**
      * Recursive function to check palindrome
