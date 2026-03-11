@@ -1,29 +1,38 @@
+class PalindromeChecker {
+
+    // Method to check palindrome
+    public boolean checkPalindrome(String input) {
+
+        int start = 0;
+        int end = input.length() - 1;
+
+        while (start < end) {
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+
+        return true;
+    }
+}
+
 public class PalindromeCheckerApp {
 
     /**
-     * Application entry point for UC10
-     * @param args Command-line arguments
+     * Application entry point for UC11
      */
     public static void main(String[] args) {
 
-        // Define the input string
-        String input = "A man a plan a canal Panama";
+        // Define input string
+        String input = "radar";
 
-        // Normalize string: remove spaces and convert to lowercase
-        String normalized = input.replaceAll("\\s+", "").toLowerCase();
+        // Create object of PalindromeChecker
+        PalindromeChecker checker = new PalindromeChecker();
 
-        // Flag to track palindrome state
-        boolean isPalindrome = true;
-
-        // Compare characters from both ends
-        for (int i = 0; i < normalized.length() / 2; i++) {
-
-            // Compare symmetric characters
-            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
-            }
-        }
+        // Call method
+        boolean isPalindrome = checker.checkPalindrome(input);
 
         // Print result
         System.out.println("Input : " + input);
