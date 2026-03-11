@@ -33,7 +33,7 @@ public class PalindromeCheckerApp {
             }
         }
 
-        // Print result
+        // Output
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
     }
