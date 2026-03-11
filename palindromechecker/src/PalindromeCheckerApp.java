@@ -9,7 +9,7 @@ public class PalindromeCheckerApp {
     public static void main(String[] args) {
 
         // Declare and initialize input
-        String input = "level";
+        String input = "noon";
 
         // Create a stack
         Stack<Character> stack = new Stack<>();
