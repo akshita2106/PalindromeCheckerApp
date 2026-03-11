@@ -1,41 +1,54 @@
-class PalindromeChecker {
+import java.util.Stack;
 
-    // Method to check palindrome
-    public boolean checkPalindrome(String input) {
+/**
+ * =========================================================
+ * MAIN CLASS - UseCase13PalindromeCheckerApp
+ * =========================================================
+ *
+ * Use Case 13: Performance Comparison
+ */
+public class PalindromeCheckerApp {
 
-        int start = 0;
-        int end = input.length() - 1;
+    /**
+     * Simple palindrome check using Stack
+     */
+    public static boolean checkPalindrome(String input) {
 
-        while (start < end) {
-            if (input.charAt(start) != input.charAt(end)) {
+        Stack<Character> stack = new Stack<>();
+
+        for (char c : input.toCharArray()) {
+            stack.push(c);
+        }
+
+        for (char c : input.toCharArray()) {
+            if (c != stack.pop()) {
                 return false;
             }
-            start++;
-            end--;
         }
 
         return true;
     }
-}
-
-public class PalindromeCheckerApp {
 
     /**
-     * Application entry point for UC11
+     * Application entry point for UC13
+     * @param args Command-line arguments
      */
     public static void main(String[] args) {
 
-        // Define input string
-        String input = "radar";
+        String input = "level";
 
-        // Create object of PalindromeChecker
-        PalindromeChecker checker = new PalindromeChecker();
+        // Capture start time
+        long startTime = System.nanoTime();
 
-        // Call method
-        boolean isPalindrome = checker.checkPalindrome(input);
+        boolean result = checkPalindrome(input);
 
-        // Print result
+        // Capture end time
+        long endTime = System.nanoTime();
+
+        long executionTime = endTime - startTime;
+
         System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome);
+        System.out.println("Is Palindrome? : " + result);
+        System.out.println("Execution Time : " + executionTime + " ns");
     }
 }
