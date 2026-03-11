@@ -30,7 +30,7 @@ public class PalindromeCheckerApp {
         // Call recursive function
         boolean isPalindrome = isPalindrome(input, 0, input.length() - 1);
 
-        // Print result
+        // Output
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + isPalindrome);
     }
