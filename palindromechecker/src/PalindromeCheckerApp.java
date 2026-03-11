@@ -1,8 +1,6 @@
 import java.util.Stack;
 
-/**
- * UC5: Stack-Based Palindrome Checker
- */
+
 
 public class PalindromeCheckerApp {
 
