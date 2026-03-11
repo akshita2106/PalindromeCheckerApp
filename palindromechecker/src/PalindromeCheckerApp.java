@@ -1,34 +1,25 @@
 import java.util.Stack;
-import java.util.Deque;
-import java.util.ArrayDeque;
 
 /**
- * INTERFACE - PalindromeStrategy
+ * =========================================================
+ * MAIN CLASS - UseCase13PalindromeCheckerApp
+ * =========================================================
+ *
+ * Use Case 13: Performance Comparison
  */
-interface PalindromeStrategy {
-    boolean checkPalindrome(String input);
-}
-
-/**
- * CLASS - StackStrategy
- */
-class StackStrategy implements PalindromeStrategy {
+public class PalindromeCheckerApp {
 
     /**
-     * Implements palindrome validation using Stack.
-     * @param input input string to validate
-     * @return true if palindrome, false otherwise
+     * Simple palindrome check using Stack
      */
-    public boolean checkPalindrome(String input) {
+    public static boolean checkPalindrome(String input) {
 
         Stack<Character> stack = new Stack<>();
 
-        // Push characters to stack
         for (char c : input.toCharArray()) {
             stack.push(c);
         }
 
-        // Compare stack with original
         for (char c : input.toCharArray()) {
             if (c != stack.pop()) {
                 return false;
@@ -37,47 +28,27 @@ class StackStrategy implements PalindromeStrategy {
 
         return true;
     }
-}
-
-/**
- * CLASS - DequeStrategy
- */
-class DequeStrategy implements PalindromeStrategy {
-
-    public boolean checkPalindrome(String input) {
-
-        Deque<Character> deque = new ArrayDeque<>();
-
-        for (char c : input.toCharArray()) {
-            deque.addLast(c);
-        }
-
-        while (deque.size() > 1) {
-            if (deque.removeFirst() != deque.removeLast()) {
-                return false;
-            }
-        }
-
-        return true;
-    }
-}
-
-public class PalindromeCheckerApp {
 
     /**
-     * Application entry point
+     * Application entry point for UC13
+     * @param args Command-line arguments
      */
     public static void main(String[] args) {
 
-        String input = "madam";
+        String input = "level";
 
-        // Inject strategy at runtime
-        PalindromeStrategy strategy = new StackStrategy();
-        // PalindromeStrategy strategy = new DequeStrategy();
+        // Capture start time
+        long startTime = System.nanoTime();
 
-        boolean result = strategy.checkPalindrome(input);
+        boolean result = checkPalindrome(input);
+
+        // Capture end time
+        long endTime = System.nanoTime();
+
+        long executionTime = endTime - startTime;
 
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + result);
+        System.out.println("Execution Time : " + executionTime + " ns");
     }
 }
