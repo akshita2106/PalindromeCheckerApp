@@ -1,34 +1,38 @@
+class PalindromeChecker {
+
+    // Method to check palindrome
+    public boolean checkPalindrome(String input) {
+
+        int start = 0;
+        int end = input.length() - 1;
+
+        while (start < end) {
+            if (input.charAt(start) != input.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+
+        return true;
+    }
+}
+
 public class PalindromeCheckerApp {
 
     /**
-     * Recursive function to check palindrome
-     */
-    static boolean isPalindrome(String str, int start, int end) {
-
-        // Base condition
-        if (start >= end) {
-            return true;
-        }
-        // If characters are not equal
-        if (str.charAt(start) != str.charAt(end)) {
-            return false;
-        }
-
-        // Recursive call
-        return isPalindrome(str, start + 1, end - 1);
-    }
-
-    /**
-     * Application entry point for UC9.
-     * @param args Command-line arguments
+     * Application entry point for UC11
      */
     public static void main(String[] args) {
 
-        // Define the input string
-        String input = "madam";
+        // Define input string
+        String input = "radar";
 
-        // Call recursive function
-        boolean isPalindrome = isPalindrome(input, 0, input.length() - 1);
+        // Create object of PalindromeChecker
+        PalindromeChecker checker = new PalindromeChecker();
+
+        // Call method
+        boolean isPalindrome = checker.checkPalindrome(input);
 
         // Output
         System.out.println("Input : " + input);
